@@ -1,0 +1,16 @@
+Yahoo! Placefinder library
+=============================================
+
+This CodeIgniter library connects to Yahoo's Placefinder service
+to geocode a postal code/zip code and return a longitude and latitude.
+
+TODO
+-----
+
+- Expand support to other parts of an address e.g. house name, road, city etc 
+
+Extra
+-----
+
+If you'd like to request changes, report bug fixes, or contact
+the developer of this library, please email <orattue[at]toomanytabs.com>
