@@ -42,11 +42,11 @@ class Placefinder
 	// --------------------------------------------------------------------
 	
 	/**
-	 * 	Geocode - supports http://developer.yahoo.com/geo/placefinder
-	 *  @access public
-	 *	@param string - refers to postal in database
-	 *	@return array or FALSE
-	 */
+	* 	Geocode - supports http://developer.yahoo.com/geo/placefinder
+	*  	@access public
+	*	@param string - refers to postal in database
+	*	@return array or FALSE
+	*/
 
 	function geocode($postal_code = NULL)
 	{
@@ -75,8 +75,8 @@ class Placefinder
 		
 		// The next two lines must be present for the kit to work with newer version of cURL
 		// You should remove them if you have any problems in earlier versions of cURL
-	    curl_setopt($curlSession, CURLOPT_SSL_VERIFYPEER, FALSE);
-	    curl_setopt($curlSession, CURLOPT_SSL_VERIFYHOST, 1);
+		curl_setopt($curlSession, CURLOPT_SSL_VERIFYPEER, FALSE);
+		curl_setopt($curlSession, CURLOPT_SSL_VERIFYHOST, 1);
 
 		// Send the request and store the result in an array
 		$rawresponse = curl_exec($curlSession);
