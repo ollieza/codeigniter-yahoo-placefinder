@@ -1,8 +1,8 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * 	Yahoo! Pathfinder class
- *  Geocodes zip/post codes into longtitude and latitude
+ * Yahoo! Pathfinder class
+ * Geocodes zip/post codes into longtitude and latitude
  *
  * This CodeIgniter library connects to Yahoo's Placefinder service 
  *
@@ -42,10 +42,10 @@ class Placefinder
 	// --------------------------------------------------------------------
 	
 	/**
-	* 	Geocode - supports http://developer.yahoo.com/geo/placefinder
-	*  	@access public
-	*	@param string - refers to postal in database
-	*	@return array or FALSE
+	* Geocode - supports http://developer.yahoo.com/geo/placefinder
+	* @access public
+	* @param string - refers to postal in database
+	* @return array or FALSE
 	*/
 
 	function geocode($postal_code = NULL)
