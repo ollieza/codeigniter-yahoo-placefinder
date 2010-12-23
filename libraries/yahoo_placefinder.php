@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Yahoo! Pathfinder class
+ * Yahoo! Placefinder class
  * Geocodes zip/post codes into longtitude and latitude
  *
  * This CodeIgniter library connects to Yahoo's Placefinder service 
@@ -36,7 +36,7 @@ class Placefinder
 
 		$this->yahoo_geo_app_id = $this->CI->config->item('yahoo_geo_app_id'));
 		
-		log_message('debug', "ePDQ CPI Class Initialized");
+		log_message('debug', "Yahoo Placefiner Class Initialized");
 	}
 			
 	// --------------------------------------------------------------------
