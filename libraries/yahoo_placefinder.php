@@ -34,7 +34,7 @@ class Placefinder
 
 		$this->CI->load->config('yahoo_placefinder_config');
 
-		$this->yahoo_geo_app_id = $this->CI->config->item('yahoo_geo_app_id'));
+		$this->yahoo_geo_app_id = $this->CI->config->item('yahoo_geo_app_id');
 		
 		log_message('debug', "Yahoo Placefiner Class Initialized");
 	}
@@ -54,7 +54,7 @@ class Placefinder
 		$curlSession = curl_init();
 		$postal_code = urlencode($postal_code);
 
-		if (!defined($this->yahoo_geo_app_id) || !$this->yahoo_geo_app_id)
+		if (!$this->yahoo_geo_app_id)
 		{
 			return FALSE;
 		}
