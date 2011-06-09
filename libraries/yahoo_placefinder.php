@@ -36,9 +36,63 @@ class Placefinder
 
 		$this->yahoo_geo_app_id = $this->CI->config->item('yahoo_geo_app_id');
 		
-		log_message('debug', "Yahoo Placefiner Class Initialized");
+		log_message('debug', "Yahoo Placefinder Class Initialized");
 	}
 			
+	// --------------------------------------------------------------------
+	
+	/**
+	* Geocode - supports http://developer.yahoo.com/geo/placefinder
+	* @access public
+	* @param string
+	* @return array or FALSE
+	*/
+
+	function geocode($location = NULL)
+	{
+		$location = urlencode($location);
+
+		if (!$this->yahoo_geo_app_id)
+		{
+			return FALSE;
+		}
+
+		$url = "http://where.yahooapis.com/geocode?location={$location}&flags=P&appid={$this->yahoo_geo_app_id}";
+
+		$geo_data = $this->do_curl($url);
+
+		$geo_data['longitude'] = $geo_data['ResultSet']['Result'][0]['longitude'];
+		$geo_data['latitude'] = $geo_data['ResultSet']['Result'][0]['latitude'];
+
+		return $geo_data;
+	}
+
+	// --------------------------------------------------------------------
+	
+	/**
+	* Geocode - supports http://developer.yahoo.com/geo/placefinder
+	* @access public
+	* @param string
+	* @param string
+	* @return array or FALSE
+	*/
+
+	function reverse_geocode($lat = NULL, $lng = NULL)
+	{
+		$latlng = urlencode($lat.', '.$lng);
+
+		if (!$this->yahoo_geo_app_id)
+		{
+			return FALSE;
+		}
+
+		$url = "http://where.yahooapis.com/geocode?location={$latlng}&flags=P&gflags=R&appid={$this->yahoo_geo_app_id}";
+
+		$geo_data = $this->do_curl($url);
+
+		return $geo_data;
+	}
+
 	// --------------------------------------------------------------------
 	
 	/**
@@ -48,18 +102,10 @@ class Placefinder
 	* @return array or FALSE
 	*/
 
-	function geocode($postal_code = NULL)
+	private function do_curl($url)
 	{
 		// Open the cURL session
 		$curlSession = curl_init();
-		$postal_code = urlencode($postal_code);
-
-		if (!$this->yahoo_geo_app_id)
-		{
-			return FALSE;
-		}
-
-		$url = "http://where.yahooapis.com/geocode?postal={$postal_code}&flags=P&appid={$this->yahoo_geo_app_id}";
 
 		// Set the URL
 		curl_setopt ($curlSession, CURLOPT_URL, $url);
@@ -90,8 +136,6 @@ class Placefinder
 		$geo_data = unserialize($rawresponse);
 
 		// Convenience array names
-		$geo_data['longitude'] = $geo_data['ResultSet']['Result'][0]['longitude'];
-		$geo_data['latitude'] = $geo_data['ResultSet']['Result'][0]['latitude'];
 
 		return $geo_data;
 	}
